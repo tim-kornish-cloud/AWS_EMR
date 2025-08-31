@@ -25,8 +25,10 @@ data "aws_availability_zones" "emr_vpc_available" {
   state = "available"
 }
 
+# create a data variable to retreive the current region
 data "aws_region" "current" {}
 
+# output the current region to console
 output "current_aws_region" {
   description = "The name of the current AWS region."
   value       = data.aws_region.current.region

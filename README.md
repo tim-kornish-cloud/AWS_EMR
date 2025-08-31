@@ -6,7 +6,13 @@ This repo is following the youtube tutorial "Intro to Amazon EMR - Big Data Tuto
 
 # Manual steps
 
-1) set up s3 bucket
+1) set up file system in s3 bucket
  - bucket_name = timothy-emr-tutorial
  - use random_pet to name the buckets
- - enable bucket versioning
+ - enable bucket versioning: use aws_s3_bucket_versioning
+ - create encryption key to use in server side encryption
+ - create a folder in the s3 bucket, specify encryption key
+
+2) create VPC
+
+3) Configure EMR cluster

@@ -1,6 +1,12 @@
 # Author: Timothy Kornish
 # CreatedDate: 8/30/2025
-# Description: set up s3 bucket to interact with emr clusters
+# Description: set up s3 bucket to interact with emr clusters.
+               The bucket will have a folder structure as follows:
+              - monthly_build
+                - 2023_09
+                  - input
+                  - output
+                  - logs
 # follows youtube tutorial: https://www.youtube.com/watch?v=8bOgOvz6Tcg&list=PLkbxKqEYgUFSDTNZ0LoTLWfPNBd7D3-iZ&index=11
 
 # create random name generator resource to set the s3 bucket names using random_pet
@@ -41,7 +47,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "emr_bucket_encryp
   }
 }
 
-# create a parent folder in the s3 bucket called monthly build
+# create a parent folder in the s3 bucket called monthly_build
 resource "aws_s3_object" "emr_bucket_folder_monthly_build" {
     bucket     = aws_s3_bucket.emr_bucket.id
     key        = "monthly_build/"
@@ -62,14 +68,14 @@ resource "aws_s3_object" "emr_bucket_folder_2023_09_input" {
     kms_key_id = aws_kms_key.emr_bucket_key.arn
 }
 
-# create a subfolder: input
+# create a subfolder: output
 resource "aws_s3_object" "emr_bucket_folder_2023_09_output" {
     bucket     = aws_s3_bucket.emr_bucket.id
     key        = "monthly_build/2023-09/output/"
     kms_key_id = aws_kms_key.emr_bucket_key.arn
 }
 
-# create a subfolder: input
+# create a subfolder: logs
 resource "aws_s3_object" "emr_bucket_folder_2023_09_logs" {
     bucket     = aws_s3_bucket.emr_bucket.id
     key        = "monthly_build/2023-09/logs/"

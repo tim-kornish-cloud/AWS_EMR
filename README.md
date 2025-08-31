@@ -1,4 +1,12 @@
-This repo is following the tutorial at: https://www.youtube.com/watch?v=8bOgOvz6Tcg&list=PLkbxKqEYgUFSDTNZ0LoTLWfPNBd7D3-iZ&index=11
+This repo is following the youtube tutorial "Intro to Amazon EMR - Big Data Tutorial using Spark" at: https://www.youtube.com/watch?v=8bOgOvz6Tcg&list=PLkbxKqEYgUFSDTNZ0LoTLWfPNBd7D3-iZ&index=11
 
-First, follow the tutorial performing a manual set up and tear down.
-Second, translate the steps from the tutorial into terraform infrastructure files.
+1) follow the tutorial performing a manual set up and tear down.
+2) translate the steps from the tutorial into terraform infrastructure files.
+
+
+# Manual steps
+
+1) set up s3 bucket
+ - bucket_name = timothy-emr-tutorial
+ - use random_pet to name the buckets
+ - enable bucket versioning

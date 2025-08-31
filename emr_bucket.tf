@@ -1,12 +1,12 @@
 # Author: Timothy Kornish
 # CreatedDate: 8/30/2025
 # Description: set up s3 bucket to interact with emr clusters.
-               The bucket will have a folder structure as follows:
-              - monthly_build
-                - 2023_09
-                  - input
-                  - output
-                  - logs
+#               The bucket will have a folder structure as follows:
+#              - monthly_build
+#                - 2023_09
+#                  - input
+#                  - output
+#                  - logs
 # follows youtube tutorial: https://www.youtube.com/watch?v=8bOgOvz6Tcg&list=PLkbxKqEYgUFSDTNZ0LoTLWfPNBd7D3-iZ&index=11
 
 # create random name generator resource to set the s3 bucket names using random_pet

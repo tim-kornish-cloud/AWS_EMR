@@ -41,8 +41,10 @@ resource "aws_subnet" "emr_public_subnet" {
   vpc_id            = aws_vpc.emr_vpc.id
   cidr_block        = cidrsubnet(aws_vpc.emr_vpc.cidr_block, 8, index(data.aws_availability_zones.emr_vpc_available.names, each.value))
   availability_zone = each.value
+  map_public_ip_on_launch = true
   tags = {
     Name = "public-subnet-${each.key}"
+    "for-use-with-amazon-emr-managed-policies" = "true"
   }
 }
 
@@ -58,7 +60,7 @@ resource "aws_internet_gateway" "emr_igw" {
 resource "aws_route_table" "emr_vpc_route_table" {
   vpc_id = aws_vpc.emr_vpc.id
   tags = {
-    Name = "private-route-table"
+    Name = "public-route-table"
   }
 }
 

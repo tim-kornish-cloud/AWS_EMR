@@ -77,7 +77,8 @@ resource "aws_emr_cluster" "emr_spark_cluster" {
  }
 
   # for each loop to create a subnet for each area in region
-  for_each          = toset(data.aws_availability_zones.emr_vpc_available.names)
+  #for_each          = toset(data.aws_availability_zones.emr_vpc_available.names)
+  for_each          = toset(["us-east-1a", "us-east-1b"])
 
   ec2_attributes {
     instance_profile                  = aws_iam_instance_profile.emr_ec2_instance_profile.name

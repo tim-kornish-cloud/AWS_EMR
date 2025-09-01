@@ -37,10 +37,11 @@ output "current_aws_region" {
 # create a public subnet
 resource "aws_subnet" "emr_public_subnet" {
   # for each loop to create a subnet for each area in region
-  for_each          = toset(data.aws_availability_zones.emr_vpc_available.names)
+  #for_each          = toset(data.aws_availability_zones.emr_vpc_available.names)
+  for_each          = toset(["us-east-1a", "us-east-1b"])
   vpc_id            = aws_vpc.emr_vpc.id
   cidr_block        = cidrsubnet(aws_vpc.emr_vpc.cidr_block, 8, index(data.aws_availability_zones.emr_vpc_available.names, each.value))
-  availability_zone = each.value
+  availability_zone = each.key
   map_public_ip_on_launch = true
   tags = {
     Name = "public-subnet-${each.key}"
@@ -68,9 +69,11 @@ resource "aws_route_table" "emr_vpc_route_table" {
   }
 }
 
+# create a route table association to each subnet
 resource "aws_route_table_association" "emr_public_subnet_association" {
   # for each loop  to associate each subnet created to the single route table
-  for_each       = toset(data.aws_availability_zones.emr_vpc_available.names)
+  #for_each       = toset(data.aws_availability_zones.emr_vpc_available.names)
+  for_each       = toset(["us-east-1a", "us-east-1b"])
   subnet_id      = aws_subnet.emr_public_subnet[each.value].id
   route_table_id = aws_route_table.emr_vpc_route_table.id
 }

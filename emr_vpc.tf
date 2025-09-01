@@ -26,7 +26,9 @@ data "aws_availability_zones" "emr_vpc_available" {
 }
 
 # create a data variable to retreive the current region
-data "aws_region" "current" {}
+data "aws_region" "current" {
+  #region = "us-east-1"
+}
 
 # output the current region to console
 output "current_aws_region" {

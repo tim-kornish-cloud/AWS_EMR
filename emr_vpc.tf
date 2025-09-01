@@ -59,6 +59,10 @@ resource "aws_internet_gateway" "emr_igw" {
 # create a route table for the vpc IPs
 resource "aws_route_table" "emr_vpc_route_table" {
   vpc_id = aws_vpc.emr_vpc.id
+  route {
+        cidr_block = "0.0.0.0/0"
+        gateway_id = aws_internet_gateway.emr_igw.id
+      }
   tags = {
     Name = "public-route-table"
   }

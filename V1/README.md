@@ -26,13 +26,9 @@ This repo is following the youtube tutorial "Intro to Amazon EMR - Big Data Tuto
 
 3) Configure EMR cluster
 
-Error: waiting for EMR Cluster (j-1V09NHUGXBILT) create: unexpected state 'TERMINATED_WITH_ERRORS', wanted target 'RUNNING, WAITING'. last error: VALIDATION_ERROR: You must also specify a ServiceAccessSecurityGroup if you use custom security groups when creating a cluster in a private subnet.
-│
-│   with aws_emr_cluster.emr_spark_cluster["us-east-1a"],
-│   on emr_cluster.tf line 63, in resource "aws_emr_cluster" "emr_spark_cluster":
-│   63: resource "aws_emr_cluster" "emr_spark_cluster" {
+current error with EMR stuck spinning up, looks like an issue with IAM role.
 
-4) Organize file structure values into:
-  - data.tf
-  - variables.tf
-  - outputs.tf
+Going to keep moving by manually setting up EMR then uploading python script and creating emr steps manually.
+
+
+
